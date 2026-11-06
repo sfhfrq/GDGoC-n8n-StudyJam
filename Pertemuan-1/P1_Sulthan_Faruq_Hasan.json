@@ -1,0 +1,101 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "716c9127-b09c-49f9-ac7e-15f7a6e0adc6",
+              "name": "status",
+              "value": "sukses",
+              "type": "string"
+            },
+            {
+              "id": "2c6e40aa-25f3-4fd3-9586-01f812cd437a",
+              "name": "messege",
+              "value": "=TerimaKasih {{ $json.body.nama }} Pesan Kamu {{ $json.body.pesan }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "c00a6737-4653-4d58-818d-163849d48b1e",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        448,
+        0
+      ],
+      "id": "764e7f48-f281-482c-bc55-ca6034366b1b",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "p1",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b16de08a-a8f7-43e7-81b3-67595e92310d",
+      "name": "Webhook",
+      "webhookId": "7edff740-dc64-46a0-8db3-a46ba87140ee"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "8c3372ae-50c1-4fd2-9afd-5dfaa361b125",
+  "meta": {
+    "instanceId": "6905e2347b954a34a9d72a3aa2056e7adc6f1adc141cc61345790857ef300b30"
+  },
+  "nodeGroups": [],
+  "id": "SSG8JdCYdhDCtkU0",
+  "tags": []
+}
